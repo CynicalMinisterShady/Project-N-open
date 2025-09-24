@@ -12,8 +12,17 @@ import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
 import { Slider } from "@/components/ui/slider";
 
-const emotions: EmotionType[] = ["Happy", "Sad", "Love"];
-
+const emotions: EmotionType[] = [
+  "Happy",
+  "Sad",
+  "Love",
+  "Dark",
+  "Spiritual",
+  "Energetic",
+  "Melancholic",
+  "Uplifting",
+  "Relaxing",
+];
 export default function GamePage() {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
