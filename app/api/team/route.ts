@@ -129,9 +129,9 @@ export async function GET() {
                   // { case: { $eq: ["$name", "Ashwani Senapati"] }, then: 4 },
                   { case: { $eq: ["$name", "Sumedha Musunuri"] }, then: 5 }, 
                   {case:{$eq: ["$name", "Saumik Chakraborty"]}, then: 6},
-                  {case: {$eq: ["$name", "Sanjana Chaudhary"]}, then: 7},
-                  {case:{$eq: ["$name", "Deepti Manjari Nayak"]}, then: 8},
-                  {case:{$eq: ["$name", "Lochan Kumar Chalamalla"]}, then: 9},
+                  // {case: {$eq: ["$name", "Sanjana Chaudhary"]}, then: 7},
+                  {case:{$eq: ["$name", "Deepti Manjari Nayak"]}, then: 7},
+                  {case:{$eq: ["$name", "Lochan Kumar Chalamalla"]}, then: 8},
                   
 
                 ],
