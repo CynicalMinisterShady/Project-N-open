@@ -31,7 +31,7 @@ type ChatHistoryItem = {
 };
 
 // Backend API configuration
-const API_BASE_URL = "https://indianearlyadult-662622027382.europe-west1.run.app"; // Update this to your Flask API URL
+const API_BASE_URL = "https://girlfriend-service-1063553229026.asia-south1.run.app"; // Update this to your Flask API URL
 
 // Supported personas and languages from backend
 const SUPPORTED_PERSONAS = {

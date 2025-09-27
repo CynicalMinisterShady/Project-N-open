@@ -28,7 +28,7 @@ type ChatHistoryItem = {
 };
 
 // Backend API configuration - Updated to match your Flask APIf
-const API_BASE_URL = "https://indiangrandparent-662622027382.europe-west1.run.app"; // Update this to your deployed URL when ready
+const API_BASE_URL = "https://grandparent-1063553229026.asia-south1.run.app"; // Update this to your deployed URL when ready
 
 // Supported languages from your backend
 const SUPPORTED_LANGUAGES = {

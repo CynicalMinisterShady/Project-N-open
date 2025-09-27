@@ -20,7 +20,7 @@ type ChatHistoryItem = {
   messages: Message[];
 };
 
-const API_BASE_URL = "https://healthcare-chatbot-662622027382.europe-west1.run.app";
+const API_BASE_URL = "https://chatbot-1063553229026.asia-south1.run.app";
 
 export default function GeneralChat() {
   const pathname = usePathname();
