@@ -1,9 +1,9 @@
+// page.tsx
 import LocomotiveWrapper from "@/components/sampelvirzeonx/LocomotiveWrapper"
-
 
 const page = () => {
   return (
-    <div suppressHydrationWarning >
+    <div suppressHydrationWarning>
       <LocomotiveWrapper/>
     </div>
   )
