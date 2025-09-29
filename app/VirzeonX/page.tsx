@@ -1,9 +1,10 @@
-import MainComponent from "./MainComponent";
+import LocomotiveWrapper from "@/components/sampelvirzeonx/LocomotiveWrapper"
+
 
 const page = () => {
   return (
-    <div>
-      <MainComponent />
+    <div suppressHydrationWarning >
+      <LocomotiveWrapper/>
     </div>
   )
 }
