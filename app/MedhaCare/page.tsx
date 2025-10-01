@@ -1,11 +1,10 @@
-import MainComponent from "./MainComponent";
+// page.tsx
 
-const page = () => {
-  return (
-    <div>
-      <MainComponent />
-    </div>
-  )
-}
 
-export default page
+import LocomotiveWrapper from "@/components/samplemedhacare/LocomotiveWrapper";
+
+const MedhaCarePage = () => {
+  return <LocomotiveWrapper />;
+};
+
+export default MedhaCarePage;
