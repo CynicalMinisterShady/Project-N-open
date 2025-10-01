@@ -9,10 +9,10 @@ const serviceData = [
     description:
       "AI-driven fitness and wellness platform offering personalized workout plans and health tracking.",
     path: "/forum",
-    url: "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1755869157/CuraForgeX_tp52fg.jpg",
+    url: "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1758816781/Gemini_Generated_Image_v2tszkv2tszkv2ts_zqeewl.png",
     type: "Fitness",
     count: "01",
-    lableUrl: "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1755869157/CuraForgeX_tp52fg.jpg",
+    lableUrl: "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1759294285/nirveonx-curaforgex-lable_mwznli.png",
   },
   {
     id: 2,
@@ -20,10 +20,10 @@ const serviceData = [
     description:
       "Instant AI-powered medical support and emergency assistance for faster healthcare access.",
     path: "/FastMediX",
-    url: "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1757928362/ChatGPT_Image_Sep_15_2025_02_55_48_PM_lx0lga.png",
+    url: "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1758816741/6_rzznsi.png",
     type: "Wellness",
     count: "02",
-    lableUrl: "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1757928362/ChatGPT_Image_Sep_15_2025_02_55_48_PM_lx0lga.png",
+    lableUrl: "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1759294285/nirveonx-fastmedix-lable_tlgbbi.png",
   },
   {
     id: 3,
@@ -31,10 +31,10 @@ const serviceData = [
     description:
       "Smart AI-driven pharmaceutical platform connecting patients with reliable medication access.",
     path: "/PharmXPlus",
-    url: "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1757928309/ChatGPT_Image_Sep_15_2025_02_54_32_PM_foo46v.png",
+    url: "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1758816741/5_wpreuy.png",
     type: "Telehealth",
     count: "03",
-    lableUrl: "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1757928309/ChatGPT_Image_Sep_15_2025_02_54_32_PM_foo46v.png",
+    lableUrl: "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1759294285/nirveonx-pharmxplus-lable_mifkok.png",
   },
   {
     id: 4,
@@ -42,10 +42,10 @@ const serviceData = [
     description:
       "AI-optimized ambulance dispatch system for real-time emergency response and care.",
     path: "/AmboRapid",
-    url: "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1757928207/ChatGPT_Image_Sep_15_2025_02_53_07_PM_ntplxt.png",
+    url: "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1758816741/4_dprfyt.png",
     type: "Elder Care",
     count: "04",
-    lableUrl: "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1757928207/ChatGPT_Image_Sep_15_2025_02_53_07_PM_ntplxt.png",
+    lableUrl: "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1759294285/nirveonx-amborapid-lable_wligsw.png",
   },
 ];
 
