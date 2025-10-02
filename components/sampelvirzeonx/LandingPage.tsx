@@ -109,7 +109,7 @@ const LandingPage = () => {
         {/* Mobile: Text second, Desktop: Left side */}
         <div className="left order-2 md:order-1">
           <p className="w-[100%] flex flex-col text-[1rem] md:text-[1.8rem] font-[500]">
-            <span className="para">VirzeonX is a multi disciplinary</span>
+            <span className="para">ArovianX is a multi disciplinary</span>
             <span className="para">studio focused on creating</span>
             <span className="para">unique,end to end experiences</span>
             <span className="para">and environments.</span>

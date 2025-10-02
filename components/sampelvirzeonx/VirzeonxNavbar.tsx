@@ -65,7 +65,7 @@ const VirzeonxNavbar = () => {
     ref={container}
     className="font-poppins cursor-auto px-[2rem] py-[1.5rem] flex justify-between">
         <h1 className='heading text-[1.8rem]'>
-            VirzeonX
+            ArovianX
         </h1>
         <div className='flex gap-[1rem]'>
             <NavButton name={"Home"} />

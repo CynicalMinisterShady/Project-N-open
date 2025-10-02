@@ -1,7 +1,7 @@
 import "../globals.css";
 
 export const metadata = {
-  title: "VirzeonX",
+  title: "ArovianX",
   description: "AI-Powered Healthcare Solutions",
 };
 

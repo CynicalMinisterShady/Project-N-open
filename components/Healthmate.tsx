@@ -61,7 +61,7 @@ export default function Home() {
             break;
           case 'chest-xray':
             setCatType("chest-xray");
-            setApiUrl("https://chest-x-ray-1063553229026.asia-south1.run.app");
+            setApiUrl("https://chest-1063553229026.asia-south1.run.app");
             setInputShow("Ask about chest X-rays or medical imaging...")
             setInitialMessage('Welcome to the Chest X-ray section. What would you like to know about your chest X-ray results?');
             console.log('Category detected: chest-xray');

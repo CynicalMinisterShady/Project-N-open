@@ -11,7 +11,7 @@ const MarqueeContent = () => {
             <div className="dot-ball inline-block w-[1.2rem] h-[1.2rem] md:w-[2rem] md:h-[2rem] lg:w-[4rem] lg:h-[4rem] rounded-[50%] bg-[#07797d] mb-1 md:mb-2 ml-[2rem] mr-[2rem]"></div>
             <h1 className="inline-block">HEALTHCARE</h1>
             <div className="dot-ball inline-block w-[1.2rem] h-[1.2rem] md:w-[2rem] md:h-[2rem] lg:w-[4rem] lg:h-[4rem] rounded-[50%] bg-[#07797d] mb-1 md:mb-2 ml-[2rem] mr-[2rem]"></div>
-            <h1 className="inline-block">VIRZEONX</h1>
+            <h1 className="inline-block">AROVIANX</h1>
             <div className="dot-ball inline-block w-[1.2rem] h-[1.2rem] md:w-[2rem] md:h-[2rem] lg:w-[4rem] lg:h-[4rem] rounded-[50%] bg-[#07797d] mb-1 md:mb-2 ml-[2rem] mr-[2rem]"></div>
         </div>
     )

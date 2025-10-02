@@ -472,7 +472,7 @@ const VirzeonXMainComponent = () => {
               >
                 <Sparkles className="w-4 h-4 text-blue-400" />
                 <span className="text-sm font-medium text-blue-300 uppercase tracking-wide">
-                  VirzeonX Services
+                  ArovianX Services
                 </span>
               </motion.div>
 

@@ -14,7 +14,7 @@ import "@/styles/responsive.css";
 const services = [
   {
     id: 1,
-    title: "VirzeonX",
+    title: "ArovianX",
     description:
       "Powerful platform with cutting-edge solutions designed to simplify your workflow and boost productivity.",
     link: "/VirzeonX",
