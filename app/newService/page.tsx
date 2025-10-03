@@ -18,7 +18,7 @@ const services = [
     description:
       "Powerful platform with cutting-edge solutions designed to simplify your workflow and boost productivity.",
     link: "/VirzeonX",
-    image: "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1757929622/virzeonX-removebg-preview_mrxv3t.png",
+    image: "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1759446952/WhatsApp_Image_2025-10-03_at_00.40.53_7c82926b-removebg-preview_bmfinn.png",
   },
   {
     id: 2,

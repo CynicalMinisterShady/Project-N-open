@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 
 import CustomCursor from '@/components/shared/custom-cursor';
 import React, { useState, useEffect, useCallback, useRef } from 'react';
+import GameProfile from "@/components/gamezone/GameProfile";
 
 interface Bubble {
   id: number;
@@ -23,6 +24,10 @@ interface Bubble {
 }
 
 export default function BubblePage() {
+  // Base game constants
+  const BASE_SPEED = 0.05; // Base bubble speed
+  const BASE_RED_BUBBLE_INTERVAL = 2500; // Base red bubble interval (2.5 seconds)
+  
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
@@ -31,6 +36,7 @@ export default function BubblePage() {
   const [gameActive, setGameActive] = useState(false);
   const [timeLeft, setTimeLeft] = useState(20);
   const [score, setScore] = useState(0);
+  const [level, setLevel] = useState(1); // Add level state
   const [highScore, setHighScore] = useState(0);
   const [missedRedBubbles, setMissedRedBubbles] = useState(0);
   const [showRedBubbleMessage, setShowRedBubbleMessage] = useState(false);
@@ -72,15 +78,29 @@ export default function BubblePage() {
     }
   }, []);
 
-  // Create a bubble with gentler wobble parameters
+  // Level-up logic: Level 2 at 7 points, then every +3 points after
+  useEffect(() => {
+    if (score >= 7) {
+      const newLevel = Math.floor((score - 7) / 3) + 2;
+      if (newLevel > level) {
+        setLevel(newLevel);
+        console.log(`🎉 Level Up! Now at Level ${newLevel}`);
+      }
+    }
+  }, [score, level]);
+
+  // Create a bubble with gentler wobble parameters and level-based speed
   const createBubble = useCallback((): Bubble => {
+    // Calculate speed based on level: +10% per level
+    const currentSpeed = BASE_SPEED * Math.pow(1.1, level - 1);
+    
     return {
       id: nextId.current++,
       x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 800),
       y: (typeof window !== 'undefined' ? window.innerHeight : 600) + 50,
       size: Math.random() * 60 + 20,
-      // Slower speed for gentler movement
-      speed: Math.random() * 0.1 + 0.05,
+      // Level-based speed instead of random
+      speed: currentSpeed + (Math.random() * 0.02), // Small random variation
       opacity: Math.random() * 0.6 + 0.4,
       hue: Math.random() * 60 + 180,
       wobble: Math.random() * Math.PI * 2, // Random starting angle
@@ -91,7 +111,7 @@ export default function BubblePage() {
       isRed: false,
       startTime: Date.now()
     };
-  }, []);
+  }, [level]);
 
   const makeRandomBubbleRed = useCallback(() => {
     const normalBubbles = bubblesRef.current.filter(b => !b.isRed);
@@ -127,6 +147,7 @@ export default function BubblePage() {
     setGameActive(true);
     setTimeLeft(20);
     setScore(0);
+    setLevel(1); // Reset level to 1 when starting new game
     setMissedRedBubbles(0);
     lastRedBubbleTime.current = Date.now();
     gameStartTime.current = Date.now();
@@ -155,7 +176,7 @@ export default function BubblePage() {
     }
   }, [gameActive]);
 
-  // Updated bubble movement and tracking
+  // Updated bubble movement and tracking with level-based mechanics
   const updateBubbles = useCallback(() => {
     if (typeof window === 'undefined') return;
     
@@ -167,8 +188,13 @@ export default function BubblePage() {
       lastBubbleTime.current = now;
     }
 
-    // Make a random bubble red every 2-3 seconds during game
-    if (gameActive && now - lastRedBubbleTime.current > (2000 + Math.random() * 1000)) {
+    // Level-based red bubble frequency: decrease interval by 2x faster per level
+    // Lower interval = higher frequency
+    // Base: 2500ms, Level 2: ~1250ms, Level 3: ~833ms, etc.
+    const redBubbleInterval = Math.max(500, BASE_RED_BUBBLE_INTERVAL / (1 + (level - 1) * 2));
+    
+    // Make a random bubble red based on level frequency
+    if (gameActive && now - lastRedBubbleTime.current > redBubbleInterval) {
       makeRandomBubbleRed();
       lastRedBubbleTime.current = now;
     }
@@ -223,7 +249,7 @@ export default function BubblePage() {
 
     // Continue animation loop
     animationFrameId.current = requestAnimationFrame(updateBubbles);
-  }, [createBubble, makeRandomBubbleRed, gameActive, updateTimer]);
+  }, [createBubble, makeRandomBubbleRed, gameActive, updateTimer, level]);
 
   // Initial setup and cleanup
   useEffect(() => {
@@ -330,8 +356,10 @@ export default function BubblePage() {
         ))}
       </div>
 
+      {!gameActive && <GameProfile user={user} />}
+
       {/* Game UI */}
-      <div className="absolute top-8 left-1/2 transform -translate-x-1/2 z-10 text-center">
+      <div className="absolute top-24 left-1/2 transform -translate-x-1/2 z-10 text-center">
         <h1 className="text-3xl font-bold text-white tracking-wide">
           {gameActive ? "Pop the Red Bubbles!" : "Bubble Pop Game"}
         </h1>
@@ -340,7 +368,7 @@ export default function BubblePage() {
         <div className="mt-2 p-3 bg-none bg-opacity-30 rounded-lg backdrop-blur-sm">
           <p className="text-gray-200 text-lg font-medium">
             {gameActive 
-              ? `Time: ${timeLeft}s | Score: ${score} | High: ${highScore}` 
+              ? `Time: ${timeLeft}s | Score: ${score} | Level: ${level} | High: ${highScore}` 
               : ""}
           </p>
           
@@ -351,6 +379,9 @@ export default function BubblePage() {
               </p>
               <p className="px-2 py-1 bg-red-500 bg-opacity-30 rounded">
                 Red bubbles: {redBubblesOnScreen}
+              </p>
+              <p className="px-2 py-1 bg-blue-500 bg-opacity-30 rounded">
+                Speed: {Math.round((BASE_SPEED * Math.pow(1.1, level - 1)) * 1000)}%
               </p>
             </div>
           )}
@@ -457,8 +488,13 @@ export default function BubblePage() {
                   border border-white/20">
           <h2 className="text-3xl font-extrabold text-white mb-4 drop-shadow-lg">Game Over!</h2>
           <p className="text-2xl text-white/90 mb-1">Your Score: <span className="font-semibold">{score}</span></p>
+          <p className="text-xl text-white/80 mb-1">Level Reached: <span className="font-semibold text-yellow-400">Level {level}</span></p>
           <p className="text-xl text-white/80">High Score: <span className="font-semibold">{highScore}</span></p>
           <p className="text-lg text-red-400 mt-3 font-medium">Missed Red Bubbles: {missedRedBubbles}</p>
+          <div className="mt-4 text-sm text-gray-300">
+            <p>Final Speed: {Math.round((BASE_SPEED * Math.pow(1.1, level - 1)) * 1000)}% of base</p>
+            <p>Red Bubble Interval: {Math.round(BASE_RED_BUBBLE_INTERVAL / (1 + (level - 1) * 2))}ms</p>
+          </div>
         </div>
       )}
 
