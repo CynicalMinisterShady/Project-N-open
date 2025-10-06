@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 
 import CustomCursor from '@/components/shared/custom-cursor';
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import GameProfile from "@/components/gamezone/GameProfile";
 
 interface Bubble {
   id: number;
@@ -24,10 +23,6 @@ interface Bubble {
 }
 
 export default function BubblePage() {
-  // Base game constants
-  const BASE_SPEED = 0.05;
-  const BASE_RED_BUBBLE_INTERVAL = 2500;
-  
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
@@ -36,11 +31,10 @@ export default function BubblePage() {
   const [gameActive, setGameActive] = useState(false);
   const [timeLeft, setTimeLeft] = useState(20);
   const [score, setScore] = useState(0);
-  const [level, setLevel] = useState(1);
   const [highScore, setHighScore] = useState(0);
   const [missedRedBubbles, setMissedRedBubbles] = useState(0);
   const [showRedBubbleMessage, setShowRedBubbleMessage] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const [isClient, setIsClient] = useState(false);
   
   const nextId = useRef(0);
   const animationFrameId = useRef<number | null>(null);
@@ -51,15 +45,8 @@ export default function BubblePage() {
   const bubblesRef = useRef<Bubble[]>([]);
   bubblesRef.current = bubbles;
 
-  // First useEffect: Handle mounting state
+  //checking user authentication
   useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // Second useEffect: Check user authentication
-  useEffect(() => {
-    if (!mounted) return;
-
     const base = process.env.NEXT_PUBLIC_API_URL;
     axios
       .get(`${base}/auth/user`, {
@@ -74,69 +61,37 @@ export default function BubblePage() {
         setLoading(false);
         router.push("/signup");
       });
-  }, [router, mounted]);
+  }, [router]);
 
-  // Third useEffect: Load high score (client-only)
+  // Initialize client-side state and load high score
   useEffect(() => {
-    if (!mounted) return;
-
-    try {
-      const saved = localStorage.getItem('bubbleGameHighScore');
-      if (saved) {
-        setHighScore(parseInt(saved, 10));
-      }
-    } catch (error) {
-      console.error('Failed to load high score:', error);
+    setIsClient(true);
+    const saved = localStorage.getItem('bubbleGameHighScore');
+    if (saved) {
+      setHighScore(parseInt(saved, 10));
     }
-  }, [mounted]);
+  }, []);
 
-  // Level-up logic
-  useEffect(() => {
-    if (score >= 7) {
-      const newLevel = Math.floor((score - 7) / 3) + 2;
-      if (newLevel > level) {
-        setLevel(newLevel);
-      }
-    }
-  }, [score, level]);
-
-  // Create a bubble - only call this client-side
+  // Create a bubble with gentler wobble parameters
   const createBubble = useCallback((): Bubble => {
-    if (typeof window === 'undefined') {
-      // Return a dummy bubble for SSR (won't be used)
-      return {
-        id: 0,
-        x: 0,
-        y: 0,
-        size: 40,
-        speed: BASE_SPEED,
-        opacity: 0.5,
-        hue: 180,
-        wobble: 0,
-        wobbleSpeed: 0.003,
-        wobbleAmount: 1,
-        isRed: false,
-        startTime: 0
-      };
-    }
-
-    const currentSpeed = BASE_SPEED * Math.pow(1.1, level - 1);
-    
     return {
       id: nextId.current++,
-      x: Math.random() * window.innerWidth,
-      y: window.innerHeight + 50,
+      x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 800),
+      y: (typeof window !== 'undefined' ? window.innerHeight : 600) + 50,
       size: Math.random() * 60 + 20,
-      speed: currentSpeed + (Math.random() * 0.02),
+      // Slower speed for gentler movement
+      speed: Math.random() * 0.1 + 0.05,
       opacity: Math.random() * 0.6 + 0.4,
       hue: Math.random() * 60 + 180,
-      wobble: Math.random() * Math.PI * 2,
+      wobble: Math.random() * Math.PI * 2, // Random starting angle
+      // Much slower wobble speed
       wobbleSpeed: Math.random() * 0.005 + 0.001,
+      // Smaller wobble amount for less vibration
       wobbleAmount: Math.random() * 1.5 + 0.5,
       isRed: false,
       startTime: Date.now()
     };
-  }, [level, BASE_SPEED]);
+  }, []);
 
   const makeRandomBubbleRed = useCallback(() => {
     const normalBubbles = bubblesRef.current.filter(b => !b.isRed);
@@ -157,35 +112,34 @@ export default function BubblePage() {
     if (poppedBubble?.isRed && gameActive) {
       setScore(prev => {
         const newScore = prev + 1;
-        if (newScore > highScore && mounted) {
+        if (newScore > highScore && isClient) {
           setHighScore(newScore);
-          try {
-            localStorage.setItem('bubbleGameHighScore', newScore.toString());
-          } catch (error) {
-            console.error('Failed to save high score:', error);
-          }
+          localStorage.setItem('bubbleGameHighScore', newScore.toString());
         }
         return newScore;
       });
     }
     setBubbles(prev => prev.filter(bubble => bubble.id !== id));
-  }, [gameActive, highScore, mounted]);
+  }, [gameActive, highScore, isClient]);
 
+  // Fixed timer implementation
   const startGame = useCallback(() => {
     setGameActive(true);
     setTimeLeft(20);
     setScore(0);
-    setLevel(1);
     setMissedRedBubbles(0);
     lastRedBubbleTime.current = Date.now();
     gameStartTime.current = Date.now();
+    
     setShowRedBubbleMessage(true);
     
+    // Clear any existing animation frame
     if (animationFrameId.current) {
       cancelAnimationFrame(animationFrameId.current);
     }
   }, []);
 
+  // Separated timer update function for cleaner code
   const updateTimer = useCallback(() => {
     if (!gameActive) return;
     
@@ -201,40 +155,49 @@ export default function BubblePage() {
     }
   }, [gameActive]);
 
+  // Updated bubble movement and tracking
   const updateBubbles = useCallback(() => {
     if (typeof window === 'undefined') return;
     
     const now = Date.now();
     
+    // Create new bubbles at a more reasonable rate (every 400ms)
     if (now - lastBubbleTime.current > 400) {
       setBubbles(prev => [...prev, createBubble()]);
       lastBubbleTime.current = now;
     }
 
-    const redBubbleInterval = Math.max(500, BASE_RED_BUBBLE_INTERVAL / (1 + (level - 1) * 2));
-    
-    if (gameActive && now - lastRedBubbleTime.current > redBubbleInterval) {
+    // Make a random bubble red every 2-3 seconds during game
+    if (gameActive && now - lastRedBubbleTime.current > (2000 + Math.random() * 1000)) {
       makeRandomBubbleRed();
       lastRedBubbleTime.current = now;
     }
 
+    // Update game timer
     updateTimer();
 
+    // Update existing bubbles with smooth movement
     setBubbles(prev => {
-      let missedRedInThisFrame = 0;
+      let missedRedInThisFrame = 0; // Count missed red bubbles in this frame
       
       const updatedBubbles = prev.reduce((acc, bubble) => {
+        // Calculate elapsed time for smoother animation
         const elapsed = now - bubble.startTime;
         const progress = elapsed * bubble.speed / 1000;
+        
+        // Calculate new position with smoother vertical movement
         const y = window.innerHeight - progress * (window.innerHeight + bubble.size);
         
+        // Remove bubbles that have gone off-screen
         if (y < -bubble.size) {
+          // Track missed red bubbles
           if (bubble.isRed && gameActive) {
             missedRedInThisFrame++;
           }
-          return acc;
+          return acc; // Don't include this bubble in the updated array
         }
         
+        // Calculate gentle horizontal wobble
         const xOffset = Math.sin(bubble.wobble) * bubble.wobbleAmount;
         
         return [
@@ -242,12 +205,15 @@ export default function BubblePage() {
           {
             ...bubble,
             y,
+            // Add wobble to x position
             x: bubble.x + xOffset,
+            // Increment wobble angle very slowly
             wobble: bubble.wobble + bubble.wobbleSpeed
           }
         ];
       }, [] as Bubble[]);
 
+      // Update missed red bubbles count if any were missed in this frame
       if (missedRedInThisFrame > 0) {
         setMissedRedBubbles(prev => prev + missedRedInThisFrame);
       }
@@ -255,25 +221,30 @@ export default function BubblePage() {
       return updatedBubbles;
     });
 
+    // Continue animation loop
     animationFrameId.current = requestAnimationFrame(updateBubbles);
-  }, [createBubble, makeRandomBubbleRed, gameActive, updateTimer, level, BASE_RED_BUBBLE_INTERVAL]);
+  }, [createBubble, makeRandomBubbleRed, gameActive, updateTimer]);
 
-  // Initialize bubbles only on client-side after mount
+  // Initial setup and cleanup
   useEffect(() => {
-    if (!mounted) return;
+    if (!isClient) return;
     
+    // Start with a few bubbles
     const initialBubbles = Array(5).fill(0).map(() => createBubble());
     setBubbles(initialBubbles);
 
+    // Start animation loop
     animationFrameId.current = requestAnimationFrame(updateBubbles);
     
+    // Cleanup on unmount
     return () => {
       if (animationFrameId.current) {
         cancelAnimationFrame(animationFrameId.current);
       }
     };
-  }, [mounted, createBubble, updateBubbles]);
+  }, [createBubble, updateBubbles, isClient]);
 
+  // Bubble style generation
   const getBubbleStyle = useCallback((bubble: Bubble) => {
     const baseStyle = {
       width: `${bubble.size}px`,
@@ -318,10 +289,11 @@ export default function BubblePage() {
     };
   }, []);
 
+  // Count metrics
   const redBubblesOnScreen = bubbles.filter(b => b.isRed).length;
 
-  // Show loading state until mounted
-  if (!mounted) {
+  // Don't render anything until client-side hydration is complete
+  if (!isClient) {
     return <div className="w-full h-screen bg-gradient-to-b from-gray-900 via-slate-900 to-black" />;
   }
 
@@ -332,6 +304,7 @@ export default function BubblePage() {
       </div>
     );
   }
+  
 
   return (
     <div 
@@ -340,33 +313,34 @@ export default function BubblePage() {
     >
       <CustomCursor containerRef={containerRef} />
       
+      {/* Background pattern */}
       <div className="absolute inset-0 opacity-10">
         {[...Array(8)].map((_, i) => (
           <div 
             key={i}
             className="absolute bg-white rounded-full animate-pulse"
             style={{
-              top: `${(i * 12.5) % 100}%`,
-              left: `${(i * 15) % 100}%`,
-              width: `${(i % 3) + 1}px`,
-              height: `${(i % 3) + 1}px`,
-              animationDuration: `${(i % 3) + 2}s`
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              width: `${Math.random() * 2 + 1}px`,
+              height: `${Math.random() * 2 + 1}px`,
+              animationDuration: `${Math.random() * 3 + 2}s`
             }}
           />
         ))}
       </div>
 
-      {!gameActive && <GameProfile user={user} />}
-
-      <div className="absolute top-24 left-1/2 transform -translate-x-1/2 z-10 text-center">
+      {/* Game UI */}
+      <div className="absolute top-8 left-1/2 transform -translate-x-1/2 z-10 text-center">
         <h1 className="text-3xl font-bold text-white tracking-wide">
           {gameActive ? "Pop the Red Bubbles!" : "Bubble Pop Game"}
         </h1>
         
+        {/* Game status */}
         <div className="mt-2 p-3 bg-none bg-opacity-30 rounded-lg backdrop-blur-sm">
           <p className="text-gray-200 text-lg font-medium">
             {gameActive 
-              ? `Time: ${timeLeft}s | Score: ${score} | Level: ${level} | High: ${highScore}` 
+              ? `Time: ${timeLeft}s | Score: ${score} | High: ${highScore}` 
               : ""}
           </p>
           
@@ -378,13 +352,11 @@ export default function BubblePage() {
               <p className="px-2 py-1 bg-red-500 bg-opacity-30 rounded">
                 Red bubbles: {redBubblesOnScreen}
               </p>
-              <p className="px-2 py-1 bg-blue-500 bg-opacity-30 rounded">
-                Speed: {Math.round((BASE_SPEED * Math.pow(1.1, level - 1)) * 1000)}%
-              </p>
             </div>
           )}
         </div>
         
+        {/* Start button */}
         {!gameActive && (
           <button 
             onClick={startGame}
@@ -395,6 +367,16 @@ export default function BubblePage() {
         )}
       </div>
 
+      {/* Red bubble message */}
+      {/* {showRedBubbleMessage && redBubblesOnScreen > 0 && (
+        <div className="absolute top-36 left-1/2 transform -translate-x-1/2 z-10 animate-pulse">
+          <p className="text-red-400 text-xl font-bold bg-black bg-opacity-50 px-4 py-2 rounded-full shadow-lg">
+            POP THE RED BUBBLE{redBubblesOnScreen > 1 ? 'S' : ''}!
+          </p>
+        </div>
+      )} */}
+
+      {/* Bubbles */}
       {bubbles.map(bubble => (
         <div
           key={bubble.id}
@@ -410,6 +392,7 @@ export default function BubblePage() {
             className="relative w-full h-full rounded-full transform-gpu will-change-transform"
             style={getBubbleStyle(bubble)}
           >
+            {/* Highlight effects */}
             <div
               className="absolute rounded-full will-change-transform"
               style={{
@@ -452,6 +435,7 @@ export default function BubblePage() {
               }}
             />
             
+            {/* Red bubble indicator */}
             {bubble.isRed && (
               <div
                 className="absolute inset-0 rounded-full animate-ping will-change-transform"
@@ -465,6 +449,7 @@ export default function BubblePage() {
         </div>
       ))}
 
+      {/* Game end screen */}
       {!gameActive && score > 0 && (
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
                   bg-white/10 backdrop-blur-xl shadow-2xl p-8 rounded-2xl text-center 
@@ -472,16 +457,12 @@ export default function BubblePage() {
                   border border-white/20">
           <h2 className="text-3xl font-extrabold text-white mb-4 drop-shadow-lg">Game Over!</h2>
           <p className="text-2xl text-white/90 mb-1">Your Score: <span className="font-semibold">{score}</span></p>
-          <p className="text-xl text-white/80 mb-1">Level Reached: <span className="font-semibold text-yellow-400">Level {level}</span></p>
           <p className="text-xl text-white/80">High Score: <span className="font-semibold">{highScore}</span></p>
           <p className="text-lg text-red-400 mt-3 font-medium">Missed Red Bubbles: {missedRedBubbles}</p>
-          <div className="mt-4 text-sm text-gray-300">
-            <p>Final Speed: {Math.round((BASE_SPEED * Math.pow(1.1, level - 1)) * 1000)}% of base</p>
-            <p>Red Bubble Interval: {Math.round(BASE_RED_BUBBLE_INTERVAL / (1 + (level - 1) * 2))}ms</p>
-          </div>
         </div>
       )}
 
+      {/* Instructions */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center">
         <p className="text-gray-400 text-sm">
           {gameActive 
