@@ -1,12 +1,10 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
-
-
 
 const BlurBgBall = () => {
   return (
@@ -17,11 +15,9 @@ const BlurBgBall = () => {
   );
 };
 
-
-
-
 const MedhacareAbout = () => {
   const container = useRef<HTMLDivElement>(null);
+  const ballAnimationsRef = useRef<gsap.core.Tween[]>([]);
 
   useGSAP(
     () => {
@@ -67,32 +63,70 @@ const MedhacareAbout = () => {
         },
       });
 
-      gsap.to(".blur-bg-ball-1", {
+      // Optimized blur ball animations - limited repeats and slower
+      const ball1Animation = gsap.to(".blur-bg-ball-1", {
         y: "random(-50, 50)",
         x: "random(-80, 80)",
         rotation: "random(-15, 15)",
         scale: "random(0.9, 1.1)",
-        duration: "random(4, 7)",
+        duration: "random(8, 12)", // Slower = less CPU
         ease: "sine.inOut",
-        repeat: -1,
+        repeat: 3, // Limited instead of -1
         yoyo: true,
         repeatRefresh: true,
       });
 
-      gsap.to(".blur-bg-ball-2", {
+      const ball2Animation = gsap.to(".blur-bg-ball-2", {
         x: "random(-50, 50, 5)",
         y: "random(-50, 50, 5)",
         rotation: "random(-45, 45)",
         scale: "random(0.8, 1.2, 0.1)",
-        duration: "random(3, 6)",
+        duration: "random(6, 10)", // Slower = less CPU
         ease: "power2.inOut",
-        repeat: -1,
+        repeat: 3, // Limited instead of -1
         yoyo: true,
         repeatRefresh: true,
       });
+
+      // Store references for cleanup
+      ballAnimationsRef.current = [ball1Animation, ball2Animation];
     },
     { scope: container }
   );
+
+  // Kill animations when component is off-screen to save CPU
+  useEffect(() => {
+    if (!container.current) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            // Component is off-screen, pause animations
+            ballAnimationsRef.current.forEach((tween) => {
+              if (tween) tween.pause();
+            });
+          } else {
+            // Component is on-screen, resume animations
+            ballAnimationsRef.current.forEach((tween) => {
+              if (tween) tween.resume();
+            });
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(container.current);
+
+    return () => {
+      observer.disconnect();
+      // Clean up animations on unmount
+      ballAnimationsRef.current.forEach((tween) => {
+        if (tween) tween.kill();
+      });
+    };
+  }, []);
 
   return (
     <div

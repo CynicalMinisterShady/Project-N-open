@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -17,6 +17,7 @@ const BlurBgBall = ({}) => {
 
 const About = () => {
   const container = useRef<HTMLDivElement>(null);
+  const ballAnimationsRef = useRef<gsap.core.Tween[]>([]);
 
   useGSAP(
     () => {
@@ -29,10 +30,10 @@ const About = () => {
         ease: "power2.out",
         scrollTrigger: {
           trigger: ".about-headling",
-          start: "top 50%", // Animation start hoga jab element 80% viewport mein aayega
+          start: "top 50%",
           end: "bottom 30%",
-          toggleActions: "play none none reverse", // Scroll up pe reverse
-          markers: false, // Production mein false rakho
+          toggleActions: "play none none reverse",
+          markers: false,
           scrub: 2,
         },
       });
@@ -67,32 +68,70 @@ const About = () => {
         },
       });
 
-      gsap.to(".blur-bg-ball-1", {
+      // Optimized blur ball animations - limited repeats and slower
+      const ball1Animation = gsap.to(".blur-bg-ball-1", {
         y: "random(-50, 50)",
         x: "random(-80, 80)",
         rotation: "random(-15, 15)",
         scale: "random(0.9, 1.1)",
-        duration: "random(4, 7)",
+        duration: "random(8, 12)", // Slower = less CPU
         ease: "sine.inOut",
-        repeat: -1,
+        repeat: 3, // Limited instead of -1
         yoyo: true,
-        repeatRefresh: true, // This makes random values refresh on each repeat
+        repeatRefresh: true,
       });
 
-      gsap.to(".blur-bg-ball-2", {
-        x: "random(-50, 50, 5)", // Random between -100 to 100, snapped to multiples of 5
+      const ball2Animation = gsap.to(".blur-bg-ball-2", {
+        x: "random(-50, 50, 5)",
         y: "random(-50, 50, 5)",
         rotation: "random(-45, 45)",
         scale: "random(0.8, 1.2, 0.1)",
-        duration: "random(3, 6)",
+        duration: "random(6, 10)", // Slower = less CPU
         ease: "power2.inOut",
-        repeat: -1,
+        repeat: 3, // Limited instead of -1
         yoyo: true,
-        repeatRefresh: true, // This refreshes random values on each repeat
+        repeatRefresh: true,
       });
+
+      // Store references for cleanup
+      ballAnimationsRef.current = [ball1Animation, ball2Animation];
     },
     { scope: container }
   );
+
+  // Kill animations when component is off-screen to save CPU
+  useEffect(() => {
+    if (!container.current) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            // Component is off-screen, pause animations
+            ballAnimationsRef.current.forEach((tween) => {
+              if (tween) tween.pause();
+            });
+          } else {
+            // Component is on-screen, resume animations
+            ballAnimationsRef.current.forEach((tween) => {
+              if (tween) tween.resume();
+            });
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(container.current);
+
+    return () => {
+      observer.disconnect();
+      // Clean up animations on unmount
+      ballAnimationsRef.current.forEach((tween) => {
+        if (tween) tween.kill();
+      });
+    };
+  }, []);
 
   return (
     <div
@@ -122,7 +161,7 @@ const About = () => {
           <div className="about-para flex flex-col text-[0.88rem] font-[200] mt-[3rem]">
             <span>We love to create, we love to solve, we love to</span>
             <span>collaborate, and we love to turn amazing</span>
-            <span>ideas into reality. We're here to partner with</span>
+            <span>ideas into reality. We are here to partner with</span>
             <span>you through every step of the process and</span>
             <span>know that relationships are the most</span>
             <span>important things we build.</span>
