@@ -28,15 +28,7 @@ export const pioneers: TeamMember[] = [
     avatar:
       "https://res.cloudinary.com/dqqyuvg1v/image/upload/v1742245692/WhatsApp_Image_2025-03-18_at_00.42.37_hwsgiw.jpg",
   },
-  {
-    id: "Cto",
-    name: "Saumik Chakraborty",
-    role: "CIO",
-    description:
-      "Saumik Chakraborty is the Chief Intelligence Officer(CIO) at NirveonX and a final-year B.Tech CSE student at NIST University. A passionate machine learning engineer, he specializes in AI, backend development, and data engineering. As a finalist in the Infosys Global Hackathon and Hack4Bihar, Saumik has built solutions like AI Interviewer, LinguaBridge, and GroqAI Chatbot. At NirveonX, he leads the development of intelligent systems that power AI-driven healthcare—ranging from mental health bots to multilingual sentiment engines—combining technical expertise with a user-first approach to deliver scalable, impactful solutions that align with the company’s mission of responsible, tech-enabled innovation.",
-    avatar:
-      "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1755869468/SaumikCTO_meehnf.jpg",
-  },
+  
   // {
   //   id: "Cooooo",
   //   name: "Sanjana Chaudhary",
@@ -58,30 +50,48 @@ export const pioneers: TeamMember[] = [
 ];
 export  const additionalPioneer: TeamMember[] = [
   // {
-  //   id: "Cooooo",
-  //   name: "Sanjana Chaudhary",
-  //   role: "COO",
+  //   id: "CFO",
+  //   name: "Chalamalla Lochan Kumar",
+  //   role: "CFO",
   //   description:
-  //     "Sanjana Chaudhary is the Chief Operating Officer at NirveonX, where she turns big ideas into real-world impact. A final-year Computer Science undergraduate, she keeps the engine running - aligning teams, streamlining operations, and ensuring every part of the company works in sync to deliver affordable, AI-powered healthcare. From managing product rollouts to supporting doctors and patients, Sanjana ensures that innovation at NirveonX stays grounded in care, clarity, and execution.",
+  //     "Chalamalla Lochan Kumar serves as the Chief Financial Officer of NirveonX, bringing strategic financial leadership to the company's mission of revolutionizing healthcare through AI-driven innovation. A B.Tech AI & ML graduate from JNTUH, he combines deep technical understanding with robust financial expertise to drive sustainable growth and operational excellence. He oversees all financial operations, strategic planning, and investment decisions that fuel NirveonX's expansion in the AI healthcare sector. His unique blend of artificial intelligence knowledge and financial acumen enables him to evaluate technology investments, optimize resource allocation, and establish financial frameworks that support innovative healthcare solutions.",
   //   avatar:
-  //     "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1750670920/bq1ewdubbpnfizmjt9a4.jpg",
+  //     "https://res.cloudinary.com/dqqyuvg1v/image/upload/v1752586382/1750947689549_komco8.jpg",
   // },
+  // {
+  //   id: "Chooo",
+  //   name: "Deepti Manjari Nayak",
+  //   role: "CHO",
+  //   description:
+  //     "Deepti Manjari Nayak serves as the Chief Hiring Officer at NirveonX, where she shapes the future of the organization by bringing together purpose-driven talent. She leads recruitment with strategy and heartcrafting hiring frameworks, nurturing company culture, and ensuring that every team is equipped to push boundaries in AI-driven healthcare. From identifying rising stars to building strong internal systems, Deepti drives a people-first approach that powers innovation, care, and sustainable growth across the company.",
+  //   avatar:
+  //     "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1750666091/sdc73yjkpzu952rpi9ku.jpg",
+  // }
   {
-    id: "CFO",
-    name: "Chalamalla Lochan Kumar",
-    role: "CFO",
+    id: "head-of-product-community",
+    name: "Vishal Kavali",
+    role: "Head of Product & Community",
     description:
-      "Chalamalla Lochan Kumar serves as the Chief Financial Officer of NirveonX, bringing strategic financial leadership to the company's mission of revolutionizing healthcare through AI-driven innovation. A B.Tech AI & ML graduate from JNTUH, he combines deep technical understanding with robust financial expertise to drive sustainable growth and operational excellence. He oversees all financial operations, strategic planning, and investment decisions that fuel NirveonX's expansion in the AI healthcare sector. His unique blend of artificial intelligence knowledge and financial acumen enables him to evaluate technology investments, optimize resource allocation, and establish financial frameworks that support innovative healthcare solutions.",
+      "I have extensive experience in Artificial Intelligence, Machine Learning, and Data Science, developing real-time intelligent systems that integrate Computer Vision, Deep Learning, and NLP. At NITEM, Hyderabad, as a Machine Learning & IoT Developer Intern, I built an AI-powered surveillance system with 95%+ accuracy, improved facial and emotion recognition models by 30%, and optimized video analytics by 40%. I also created a multilingual NLP translation system that boosted efficiency by 60% across five languages. Additionally, I’ve developed AI dashboards, OpenCV-based virtual calculators, and OCR-driven document intelligence systems using LangChain, Hugging Face, and Pinecone—focusing on scalable, automated, and data-driven AI solutions.",
     avatar:
-      "https://res.cloudinary.com/dqqyuvg1v/image/upload/v1752586382/1750947689549_komco8.jpg",
+      "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1760637109/Vishal_sir_fmh5yk.jpg",
   },
   {
-    id: "Chooo",
-    name: "Deepti Manjari Nayak",
-    role: "CHO",
+    id: "Cooooo",
+    name: "Anirudh",
+    role: "COO",
     description:
-      "Deepti Manjari Nayak serves as the Chief Hiring Officer at NirveonX, where she shapes the future of the organization by bringing together purpose-driven talent. She leads recruitment with strategy and heartcrafting hiring frameworks, nurturing company culture, and ensuring that every team is equipped to push boundaries in AI-driven healthcare. From identifying rising stars to building strong internal systems, Deepti drives a people-first approach that powers innovation, care, and sustainable growth across the company.",
+      "Anirudh is the Chief Operating Officer at NirveonX, where she turns big ideas into real-world impact. A final-year Computer Science undergraduate, she keeps the engine running - aligning teams, streamlining operations, and ensuring every part of the company works in sync to deliver affordable, AI-powered healthcare. From managing product rollouts to supporting doctors and patients, Sanjana ensures that innovation at NirveonX stays grounded in care, clarity, and execution.",
     avatar:
-      "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1750666091/sdc73yjkpzu952rpi9ku.jpg",
-  }
+      "",
+  },
+  {
+    id: "Cto",
+    name: "Srikar Pothu",
+    role: "CTO",
+    description:
+    "I have extensive experience in Artificial Intelligence, Machine Learning, and Data Science, developing real-time intelligent systems that integrate Computer Vision, Deep Learning, and NLP. At NITEM, Hyderabad, as a Machine Learning & IoT Developer Intern, I built an AI-powered surveillance system with 95%+ accuracy, improved facial and emotion recognition models by 30%, and optimized video analytics by 40%. I also created a multilingual NLP translation system that boosted efficiency by 60% across five languages. Additionally, I’ve developed AI dashboards, OpenCV-based virtual calculators, and OCR-driven document intelligence systems using LangChain, Hugging Face, and Pinecone—focusing on scalable, automated, and data-driven AI solutions.",
+    avatar:
+      "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1760536781/new-cto_yzha5u.jpg",
+  },
 ]
