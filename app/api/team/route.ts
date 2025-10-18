@@ -131,7 +131,7 @@ export async function GET() {
                   { case: { $eq: ["$name", "Sumedha Musunuri"] }, then: 5 }, 
                   {case:{$eq: ["$name", "Srikar Pothu"]}, then: 6},
                   // {case: {$eq: ["$name", "Sanjana Chaudhary"]}, then: 7},
-                  {case:{$eq: ["$name", "Anirudh Vadrevu"]}, then: 7},
+                  {case:{$eq: ["$name", "Anirudh Vadrevu "]}, then: 7},
                   {case:{$eq: ["$name", "Shaik Ashraf"]}, then: 8},
                   {case:{$eq: ["$name", "Kasu Naren Karthik Raju"]}, then: 9},
                   
