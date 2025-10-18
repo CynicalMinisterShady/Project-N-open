@@ -8,7 +8,7 @@ export const pioneers: TeamMember[] = [
     description:
       "Kavali Deekshith is the Co-Founder & CEO of NirveonX, leading AI-driven healthcare innovation with strong leadership and strategic vision. A B.Tech AI & ML student at JNTUH, he is a visionary entrepreneur, AI innovator, and dynamic leader known for his decision-making, problem-solving, and team-building skills. A CBSE merit holder and national-level science project winner, he blends technical expertise, business acumen, and creativity to drive impactful change in healthcare and AI.",
     avatar:
-      "/DeekshitBhaiya.jpg",
+      "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1760807383/nirveon-ceo_wvdoxd.png",
   },
   {
     id: "CEO",
@@ -83,7 +83,7 @@ export  const additionalPioneer: TeamMember[] = [
     description:
     "Anirudh Vadrevu is the Chief Operating Officer (COO) of NirveonX, where he drives operational excellence, product strategy, and execution across the AI-powered healthcare ecosystem. A B.Tech AI & ML student at JNTUH and a learner in the IIT Madras BS Degree in Data Science and Programming, he combines a strong foundation in artificial intelligence, software development, and systems thinking. With hands-on experience in building scalable web platforms, designing intuitive user experiences, and integrating AI into real-world solutions, Anirudh ensures that NirveonX’s vision translates into efficient, high-impact outcomes.",
     avatar:
-      "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1760787529/coo_uiupyw.jpg",
+      "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1760807383/nirveon-coo_pmalfg.png",
   },
   {
     id: "Cto",
