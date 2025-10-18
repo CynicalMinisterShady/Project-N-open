@@ -309,7 +309,7 @@ import React from 'react'
 const page = () => {
   return (
     <div>
-      Bubble Game is temporary off.
+      Bubble Game is temporary off now.
     </div>
   )
 }
