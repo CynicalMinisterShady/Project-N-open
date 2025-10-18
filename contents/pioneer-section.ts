@@ -78,12 +78,12 @@ export  const additionalPioneer: TeamMember[] = [
   },
   {
     id: "Cooooo",
-    name: "Anirudh",
-    role: "COO",
+    name: "Anirudh Vadrevu",
+    role: "Chief Operating Officer",
     description:
-      "Anirudh is the Chief Operating Officer at NirveonX, where she turns big ideas into real-world impact. A final-year Computer Science undergraduate, she keeps the engine running - aligning teams, streamlining operations, and ensuring every part of the company works in sync to deliver affordable, AI-powered healthcare. From managing product rollouts to supporting doctors and patients, Sanjana ensures that innovation at NirveonX stays grounded in care, clarity, and execution.",
+    "Anirudh Vadrevu is the Chief Operating Officer (COO) of NirveonX, where he drives operational excellence, product strategy, and execution across the AI-powered healthcare ecosystem. A B.Tech AI & ML student at JNTUH and a learner in the IIT Madras BS Degree in Data Science and Programming, he combines a strong foundation in artificial intelligence, software development, and systems thinking. With hands-on experience in building scalable web platforms, designing intuitive user experiences, and integrating AI into real-world solutions, Anirudh ensures that NirveonX’s vision translates into efficient, high-impact outcomes.",
     avatar:
-      "",
+      "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1760787529/coo_uiupyw.jpg",
   },
   {
     id: "Cto",
