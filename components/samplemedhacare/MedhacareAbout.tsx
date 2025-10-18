@@ -64,32 +64,32 @@ const MedhacareAbout = () => {
       });
 
       // Optimized blur ball animations - limited repeats and slower
-      const ball1Animation = gsap.to(".blur-bg-ball-1", {
-        y: "random(-50, 50)",
-        x: "random(-80, 80)",
-        rotation: "random(-15, 15)",
-        scale: "random(0.9, 1.1)",
-        duration: "random(8, 12)", // Slower = less CPU
-        ease: "sine.inOut",
-        repeat: 3, // Limited instead of -1
-        yoyo: true,
-        repeatRefresh: true,
-      });
+      // const ball1Animation = gsap.to(".blur-bg-ball-1", {
+      //   y: "random(-50, 50)",
+      //   x: "random(-80, 80)",
+      //   rotation: "random(-15, 15)",
+      //   scale: "random(0.9, 1.1)",
+      //   duration: "random(8, 12)", // Slower = less CPU
+      //   ease: "sine.inOut",
+      //   repeat: 3, // Limited instead of -1
+      //   yoyo: true,
+      //   repeatRefresh: true,
+      // });
 
-      const ball2Animation = gsap.to(".blur-bg-ball-2", {
-        x: "random(-50, 50, 5)",
-        y: "random(-50, 50, 5)",
-        rotation: "random(-45, 45)",
-        scale: "random(0.8, 1.2, 0.1)",
-        duration: "random(6, 10)", // Slower = less CPU
-        ease: "power2.inOut",
-        repeat: 3, // Limited instead of -1
-        yoyo: true,
-        repeatRefresh: true,
-      });
+      // const ball2Animation = gsap.to(".blur-bg-ball-2", {
+      //   x: "random(-50, 50, 5)",
+      //   y: "random(-50, 50, 5)",
+      //   rotation: "random(-45, 45)",
+      //   scale: "random(0.8, 1.2, 0.1)",
+      //   duration: "random(6, 10)", // Slower = less CPU
+      //   ease: "power2.inOut",
+      //   repeat: 3, // Limited instead of -1
+      //   yoyo: true,
+      //   repeatRefresh: true,
+      // });
 
-      // Store references for cleanup
-      ballAnimationsRef.current = [ball1Animation, ball2Animation];
+      // // Store references for cleanup
+      // ballAnimationsRef.current = [ball1Animation, ball2Animation];
     },
     { scope: container }
   );
