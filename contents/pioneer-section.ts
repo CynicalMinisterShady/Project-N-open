@@ -8,7 +8,7 @@ export const pioneers: TeamMember[] = [
     description:
       "Kavali Deekshith is the Co-Founder & CEO of NirveonX, leading AI-driven healthcare innovation with strong leadership and strategic vision. A B.Tech AI & ML student at JNTUH, he is a visionary entrepreneur, AI innovator, and dynamic leader known for his decision-making, problem-solving, and team-building skills. A CBSE merit holder and national-level science project winner, he blends technical expertise, business acumen, and creativity to drive impactful change in healthcare and AI.",
     avatar:
-      "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1760807383/nirveon-ceo_wvdoxd.png",
+      "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1760813259/nirveon-ceo_1_ctxoiy.png",
   },
   {
     id: "CEO",
@@ -17,7 +17,7 @@ export const pioneers: TeamMember[] = [
     description:
       "Ayush Kumar Sahoo is the Co-Founder and Chief Marketing Officer at NirveonX, where he turns vision into viable strategy. A final-year BTech student at NIT Rourkela, Ayush brings technical rigor and financial focus to every decision. He keeps the numbers sharp and the mission steady - shaping business models, managing budgets, and building financial systems that fuel sustainable growth. From driving fundraising efforts to optimizing costs and ensuring compliance, Ayush makes sure every step forward is financially sound and purpose-driven. With a clear eye on both impact and investment, he helps NirveonX scale responsibly in the world of AI-powered healthcare.",
     avatar:
-      "https://res.cloudinary.com/dqqyuvg1v/image/upload/v1742285267/WhatsApp_Image_2025-03-18_at_02.54.10_zk0air.jpg",
+      "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1760890383/WhatsApp_Image_2025-10-19_at_16.31.24_cd8a8d79_plappd.jpg",
   },
   {
     id: "Co-founder",
@@ -72,7 +72,7 @@ export  const additionalPioneer: TeamMember[] = [
     name: "Vishal Kavali",
     role: "Head of Product & Community",
     description:
-      "I have extensive experience in Artificial Intelligence, Machine Learning, and Data Science, developing real-time intelligent systems that integrate Computer Vision, Deep Learning, and NLP. At NITEM, Hyderabad, as a Machine Learning & IoT Developer Intern, I built an AI-powered surveillance system with 95%+ accuracy, improved facial and emotion recognition models by 30%, and optimized video analytics by 40%. I also created a multilingual NLP translation system that boosted efficiency by 60% across five languages. Additionally, I’ve developed AI dashboards, OpenCV-based virtual calculators, and OCR-driven document intelligence systems using LangChain, Hugging Face, and Pinecone—focusing on scalable, automated, and data-driven AI solutions.",
+      "Kavali Vishal has extensive experience in Artificial Intelligence, Machine Learning, and Data Science, specializing in developing real-time intelligent systems that integrate Computer Vision, Deep Learning, and Natural Language Processing. During his tenure as a Machine Learning & IoT Developer Intern at NITEM, Hyderabad, he built an AI-powered surveillance system achieving over 95% accuracy, enhanced facial and emotion recognition models by 30%, and optimized video analytics efficiency by 40%. He also developed a multilingual NLP translation system that improved processing efficiency by 60% across five languages. In addition, Vishal has created AI dashboards, OpenCV-based virtual calculators, and OCR-driven document intelligence systems using frameworks such as LangChain, Hugging Face, and Pinecone—focusing on scalable, automated, and data-driven AI solutions.",
     avatar:
       "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1760637109/Vishal_sir_fmh5yk.jpg",
   },
@@ -90,7 +90,7 @@ export  const additionalPioneer: TeamMember[] = [
     name: "Srikar Pothu",
     role: "CTO",
     description:
-    "I have extensive experience in Artificial Intelligence, Machine Learning, and Data Science, developing real-time intelligent systems that integrate Computer Vision, Deep Learning, and NLP. At NITEM, Hyderabad, as a Machine Learning & IoT Developer Intern, I built an AI-powered surveillance system with 95%+ accuracy, improved facial and emotion recognition models by 30%, and optimized video analytics by 40%. I also created a multilingual NLP translation system that boosted efficiency by 60% across five languages. Additionally, I’ve developed AI dashboards, OpenCV-based virtual calculators, and OCR-driven document intelligence systems using LangChain, Hugging Face, and Pinecone—focusing on scalable, automated, and data-driven AI solutions.",
+    "ISrikar Pothu has extensive experience in Artificial Intelligence, Machine Learning, and Data Science, with a strong focus on developing real-time intelligent systems that integrate Computer Vision, Deep Learning, and Natural Language Processing. During his tenure as a Machine Learning & IoT Developer Intern at NITEM, Hyderabad, he built an AI-powered surveillance system achieving over 95% accuracy, enhanced facial and emotion recognition models by 30%, and optimized video analytics performance by 40%. He also developed a multilingual NLP translation system that increased efficiency by 60% across five languages. Additionally, Srikar has created AI dashboards, OpenCV-based virtual calculators, and OCR-driven document intelligence systems using LangChain, Hugging Face, and Pinecone—emphasizing scalable, automated, and data-driven AI solutions.",
     avatar:
       "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1760536781/new-cto_yzha5u.jpg",
   },
