@@ -27,7 +27,7 @@ export const menuItems = [
     name: "Team",
     path: "/team",
     image:
-      "https://res.cloudinary.com/dg3qhhnjo/image/upload/v1749715931/pioneer_b9hg9j.jpg",
+      "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1760891509/team_imgupscaler.ai_General_4K_eek9j7.jpg",
   },
   // {
   //   name: "Certificates",
