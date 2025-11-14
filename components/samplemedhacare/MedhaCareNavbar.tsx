@@ -2,6 +2,7 @@
 import React, { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import Link from 'next/link';
 
 gsap.registerPlugin(useGSAP);
 
@@ -69,10 +70,10 @@ const MedhaCareNavbar = () => {
     >
       <h1 className="heading text-[1.8rem]">MedhaCare</h1>
       <div className="flex gap-[1rem]">
-        <NavButton name={"Home"} />
-        <NavButton name={"Signup"} />
-        <NavButton name={"Login"} />
-        <MobileNavButton name={"Login"} />
+        <Link href='/'><NavButton name={"Home"} /></Link>
+        <Link href='/signup'><NavButton name={"Signup"} /></Link>
+        <Link href='/login'><NavButton name={"Login"} /></Link>
+        <Link href='/login'><MobileNavButton name={"Login"} /></Link>
       </div>
     </div>
   );

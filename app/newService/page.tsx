@@ -8,7 +8,6 @@ import ParticlesBackground from "@/components/shared/particle-background";
 import CustomCursor from "@/components/shared/custom-cursor";
 import BackButton from "@/components/Auth/BackButton";
 
-
 import "@/styles/responsive.css";
 
 const services = [
@@ -27,6 +26,14 @@ const services = [
       "Smart healthcare service ensuring seamless patient management, faster diagnostics, and better accessibility.",
     link: "/MedhaCare",
     image: "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1757929627/medhacare-removebg-preview_ww3r5y.png",
+  },
+  {
+    id: 3,
+    title: "NirveonX Lab",
+    description:
+      "Pushing boundaries in AI research, automation, simulation technologies, and accelerated computing for tomorrow's challenges.",
+    link: "/nirveonx-lab",
+    image: "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1763083128/ChatGPT_Image_Nov_14__2025__06_47_13_AM-removebg-preview_yas4lr.png",
   },
 ];
 
@@ -49,17 +56,17 @@ const Page = () => {
       {/* Main Content */}
       <div
         ref={containerRef}
-        className="relative z-10 w-full max-w-6xl px-4 lg:px-12 flex flex-col items-center"
+        className="relative z-10 w-full max-w-7xl mt-20 px-4 lg:px-12 flex flex-col items-center"
       >
-        {/* Cards Section */}
-        <div className="service-card-wrapper row flex flex-wrap justify-center gap-8 mt-16">
+        {/* Cards Section - Row layout on large screens */}
+        <div className="service-card-wrapper w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
           {services.map((service) => (
             <Link
               key={service.id}
               href={service.link}
-              className="group col-lg-6 col-md-12 w-full md:w-[45%]"
+              className="group w-full"
             >
-              <div className="p-8 pt-20 relative rounded-2xl shadow-lg bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 transition-all duration-500 ease-in-out overflow-hidden">
+              <div className="p-8 pt-20 relative rounded-2xl shadow-lg bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 transition-all duration-500 ease-in-out overflow-hidden h-full">
                 {/* Decorative BG Logo */}
                 <img
                   className="absolute opacity-10 group-hover:opacity-50 transition-opacity duration-500 ease-in-out w-40 bottom-[55%] scale-[2] right-[-1rem] pointer-events-none"
