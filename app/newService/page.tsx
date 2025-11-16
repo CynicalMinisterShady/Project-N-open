@@ -29,7 +29,7 @@ const services = [
   },
   {
     id: 3,
-    title: "NirveonX Lab",
+    title: "NirveonX Labs",
     description:
       "Pushing boundaries in AI research, automation, simulation technologies, and accelerated computing for tomorrow's challenges.",
     link: "/nirveonx-lab",
