@@ -408,7 +408,7 @@ const TeamPage = () => {
           {/* Fixed Certificate Button */}
           <div 
           className="absolute bottom-0 left-0 w-full flex justify-center pb-4 bg-gradient-to-t from-[#0d0d0d] via-[#0d0d0d]/60 to-transparent"
-          onClick={() => router.push(`/certificates`)}>
+          onClick={() => router.push(`/certificate`)}>
             <div className="bg-white text-black p-2 w-fit flex rounded-3xl items-center">
               <div className="w-6 h-6 rounded-full bg-black text-white text-center flex justify-center items-center">
                 <div>

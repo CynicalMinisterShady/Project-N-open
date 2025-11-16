@@ -135,7 +135,7 @@ const VirzeonxService = () => {
     <div className="overflow-hidden relative cursor-auto hidden sm:flex flex-col py-12 w-full">
       <div className="px-8 py-12 flex items-center gap-4 text-lg font-extralight">
         <div className="h-3 w-3 bg-[#23b8ab] rounded-full"></div>
-        <h1>VIRZEON SERVICES</h1>
+        <h1>AROVIANX SERVICES</h1>
       </div>
       <div className="service-container w-full">
         {serviceData.map((service) => (
