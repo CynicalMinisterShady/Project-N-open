@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
+
 // Inline style to ensure the default mouse pointer is shown
 const cursorStyle = {
   cursor: "auto",
@@ -147,7 +148,7 @@ const AmboRapidLandingPage = () => {
             whileTap={{ scale: 0.95 }}
             className="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-full font-semibold transition-colors shadow-lg"
           >
-            Emergency SOS
+            <Link href="/MedhaCare">Back</Link>
           </motion.button>
         </div>
       </header>

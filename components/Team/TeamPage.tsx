@@ -341,9 +341,11 @@ const TeamPage = () => {
 
 
           <div className="flex gap-4 text-black">
+            <Link href="/">
             <div className="p-3 bg-white h-10 w-10 rounded-full flex justify-center items-center">
               <ArrowBigLeft size={20} strokeWidth={3} />
             </div>
+            </Link>
             <div className="p-3 bg-white h-10 w-10 rounded-full flex justify-center items-center">
               <User size={20} strokeWidth={3} />
             </div>
