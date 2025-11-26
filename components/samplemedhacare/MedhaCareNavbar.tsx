@@ -70,7 +70,7 @@ const MedhaCareNavbar = () => {
     >
       <h1 className="heading text-[1.8rem]">MedhaCare</h1>
       <div className="flex gap-[1rem]">
-        <Link href='/'><NavButton name={"Home"} /></Link>
+        <Link href='/newService'><NavButton name={"Back"} /></Link>
         <Link href='/signup'><NavButton name={"Signup"} /></Link>
         <Link href='/login'><NavButton name={"Login"} /></Link>
         <Link href='/login'><MobileNavButton name={"Login"} /></Link>

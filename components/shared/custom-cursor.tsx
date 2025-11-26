@@ -91,10 +91,14 @@ export default function CustomCursor({ containerRef }: CustomCursorProps) {
       scale: 1,
       opacity: 0.8,
       transition: {
-        type: "spring",
-        mass: 0.1,
-        damping: 22,
-        stiffness: 800,
+        // type: "spring",
+        // mass: 0.1,
+        // damping: 22,
+        // stiffness: 800,
+
+        //new style config
+        type: "tween",
+        duration: 0,
       },
     },
     hover: {

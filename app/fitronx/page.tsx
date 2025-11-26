@@ -9,12 +9,16 @@ import { ThemeProvider } from "next-themes";
 import ParticlesBackground from "@/components/shared/particle-background";
 import NoiseTexture from "@/components/shared/noise-texture";
 import { useState } from "react"
+import Link from "next/link";
+import { ChevronLeft } from "lucide-react";
 
 function ContactInfo() {
   const [showContact, setShowContact] = useState(false)
 
   return (
     <div className="relative">
+
+       
       <Button
         variant="outline" 
         className="border-white/20 hover:bg-white/10 text-white px-8 py-6 text-lg relative overflow-hidden group"
@@ -90,6 +94,11 @@ export default function FitarthPage() {
          <ParticlesBackground />
     <div className="min-h-screen bg-gradient-to-b from-black to-gray-900 dark:from-black dark:to-gray-900 text-white overflow-hidden">
       {/* Hero Section */}
+      <Link href="/VirzeonX" className="z-[500] absolute left-[20px]  md:left-[52px]  top-[55px]">
+          <div className="p-2 text-black bg-white cursor-auto hover:bg-[#b3b3b3] w-10 h-10 rounded-[50%] flex justify-center items-center">
+            <ChevronLeft size={36} />
+          </div>
+        </Link>
       <section className="relative py-10">
         <div className="container mx-auto px-4 md:px-8">
 

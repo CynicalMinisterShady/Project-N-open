@@ -1,28 +1,30 @@
 "use client";
-import CustomCursor from '@/components/shared/custom-cursor';
-import ParticlesBackground from '@/components/shared/particle-background';
-import ChatbotServices from '@/sections/ChatBotServices/chatbot-services';
-import InvestorSection from '@/sections/Patron/Investors';
-import AdditionalTeamMembersSection from '@/sections/Pioneer/additionalPioneer';
-import TeamMembersSection from '@/sections/Pioneer/pioneer';
-import { ThemeProvider } from 'next-themes';
-import React,{useRef} from 'react'
+import CustomCursor from "@/components/shared/custom-cursor";
+import ParticlesBackground from "@/components/shared/particle-background";
+import ChatbotServices from "@/sections/ChatBotServices/chatbot-services";
+import InvestorSection from "@/sections/Patron/Investors";
+import AdditionalTeamMembersSection from "@/sections/Pioneer/additionalPioneer";
+import TeamMembersSection from "@/sections/Pioneer/pioneer";
+import { ThemeProvider } from "next-themes";
+import React, { useRef } from "react";
 
 const page = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   return (
     <div>
       <ThemeProvider attribute="class" defaultTheme="dark">
-        <CustomCursor
+        {/* <CustomCursor
           containerRef={containerRef as React.RefObject<HTMLDivElement>}
-        />
-        <ParticlesBackground/>
-        <InvestorSection/>
-        <TeamMembersSection/>
-        <AdditionalTeamMembersSection/>
+        /> */}
+        <div className="cursor-auto">
+          <ParticlesBackground />
+          <InvestorSection />
+          <TeamMembersSection />
+          <AdditionalTeamMembersSection />
+        </div>
       </ThemeProvider>
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;
