@@ -47,6 +47,17 @@ const serviceData = [
     count: "04",
     lableUrl: "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1759294285/nirveonx-amborapid-lable_wligsw.png",
   },
+  {
+    id: 5,
+    name: "Wellip",
+    description:
+      "Comprehensive wellness platform with AI-powered health monitoring and lifestyle optimization.",
+    path: "/wellip",
+    url: "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1756118529/Wellip__kfqux2.png",
+    type: "Wellness",
+    count: "02",
+    lableUrl: "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1759127668/nirveonx-wellip-lable_maqvet.png",
+  },
 ];
 
 

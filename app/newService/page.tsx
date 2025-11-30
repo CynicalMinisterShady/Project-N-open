@@ -11,16 +11,16 @@ import BackButton from "@/components/Auth/BackButton";
 import "@/styles/responsive.css";
 
 const services = [
+  // {
+  //   id: 1,
+  //   title: "ArovianX",
+  //   description:
+  //     "Powerful platform with cutting-edge solutions designed to simplify your workflow and boost productivity.",
+  //   link: "/VirzeonX",
+  //   image: "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1759446952/WhatsApp_Image_2025-10-03_at_00.40.53_7c82926b-removebg-preview_bmfinn.png",
+  // },
   {
     id: 1,
-    title: "ArovianX",
-    description:
-      "Powerful platform with cutting-edge solutions designed to simplify your workflow and boost productivity.",
-    link: "/VirzeonX",
-    image: "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1759446952/WhatsApp_Image_2025-10-03_at_00.40.53_7c82926b-removebg-preview_bmfinn.png",
-  },
-  {
-    id: 2,
     title: "MedhaCare",
     description:
       "Smart healthcare service ensuring seamless patient management, faster diagnostics, and better accessibility.",
@@ -28,7 +28,7 @@ const services = [
     image: "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1757929627/medhacare-removebg-preview_ww3r5y.png",
   },
   {
-    id: 3,
+    id: 2,
     title: "NirveonX Labs",
     description:
       "Pushing boundaries in AI research, automation, simulation technologies, and accelerated computing for tomorrow's challenges.",
@@ -59,7 +59,8 @@ const Page = () => {
         className="relative z-10 w-full max-w-7xl mt-20 px-4 lg:px-12 flex flex-col items-center"
       >
         {/* Cards Section - Row layout on large screens */}
-        <div className="service-card-wrapper w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+        <div className="service-card-wrapper w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mt-16 place-items-center">
+
           {services.map((service) => (
             <Link
               key={service.id}
