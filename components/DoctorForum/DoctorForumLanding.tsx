@@ -22,8 +22,10 @@ import {
   Globe,
   Lock,
   Zap,
+  ChevronLeft
 } from "lucide-react";
 import Link from "next/link";
+
 
 // Custom CSS for cursor visibility
 const cursorStyle = {
@@ -225,6 +227,11 @@ const DoctorForumLanding = () => {
   return (
     <div className="min-h-screen bg-black" style={cursorStyle}>
       {/* Hero Section */}
+      <Link href="/MedhaCare" className="z-[500] absolute left-[20px]  md:left-[52px]  top-[55px]">
+          <div className="p-2 text-black bg-white cursor-auto hover:bg-[#b3b3b3] w-10 h-10 rounded-[50%] flex justify-center items-center">
+            <ChevronLeft size={36} />
+          </div>
+        </Link>
       <section
         className="relative bg-gradient-to-br from-black via-gray-900 to-black py-20"
         style={cursorStyle}

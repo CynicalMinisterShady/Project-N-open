@@ -67,7 +67,7 @@ const ServiceSwiperSection = () => {
   return (
     <div className="cursor-auto py-20">
       <div className="px-8 py-12 flex items-center gap-4 text-lg font-extralight">
-        <div className="h-3 w-3 bg-[#23b8ab] rounded-full"></div>
+        <div className="h-3 w-3 bg-[#d41caf] rounded-full"></div>
         <h1>SERVICE DETAILS</h1>
       </div>
       <div className="swiper-container max-w-full overflow-x-auto scrollbar-hide flex gap-8 px-8 pb-4">

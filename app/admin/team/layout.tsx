@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import TeamClient from "@/components/TeamClient";
 
 export const metadata: Metadata = {
-  title: "Our Team",
+  title: "Admin Team",
   description:
     "Meet the passionate individuals behind NirveonX who are dedicated to transforming healthcare through AI innovation.",
 };

@@ -47,6 +47,17 @@ const serviceData = [
     count: "04",
     lableUrl: "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1759294285/nirveonx-amborapid-lable_wligsw.png",
   },
+  {
+    id: 5,
+    name: "Wellip",
+    description:
+      "Comprehensive wellness platform with AI-powered health monitoring and lifestyle optimization.",
+    path: "/wellip",
+    url: "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1756118529/Wellip__kfqux2.png",
+    type: "Wellness",
+    count: "02",
+    lableUrl: "https://res.cloudinary.com/dnfq7ty1x/image/upload/v1759127668/nirveonx-wellip-lable_maqvet.png",
+  },
 ];
 
 
@@ -113,7 +124,7 @@ const MedhaCareService = () => {
   return (
     <div className="overflow-hidden relative cursor-auto hidden sm:flex flex-col py-12 w-full">
       <div className="px-8 py-12 flex items-center gap-4 text-lg font-extralight">
-        <div className="h-3 w-3 bg-[#23b8ab] rounded-full"></div>
+        <div className="h-3 w-3 bg-[#d41caf] rounded-full"></div>
         <h1>MEDHACARE SERVICES</h1>
       </div>
       <div className="service-container w-full">
@@ -138,9 +149,9 @@ const MedhaCareService = () => {
         />
       )}
 
-      <Link href="/MedhaCare">
+      <Link href="/VirzeonX">
         <div className="relative overflow-hidden group px-6 py-3 mt-16 ml-8 rounded-full border border-white/50 hover:text-black transition-all ease-in-out duration-200 w-fit h-fit text-sm font-normal">
-          <span className="relative z-10">Explore MedhaCare</span>
+          <span className="relative z-10">Explore ArovianX</span>
           <div className="absolute left-0 right-0 h-full bg-white rounded-full bottom-[-100%] group-hover:bottom-0 transition-all duration-300 ease-in-out"></div>
         </div>
       </Link>

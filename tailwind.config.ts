@@ -19,8 +19,10 @@ const config: Config = {
     },
     extend: {
       fontFamily: {
-        poppins: ['Poppins', 'sans-serif'],
-      },
+    poppins: ['Poppins', 'sans-serif'],
+    bebas: ['var(--font-bebas)', 'sans-serif'],
+    roboto: ['Roboto', 'sans-serif'],
+  },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

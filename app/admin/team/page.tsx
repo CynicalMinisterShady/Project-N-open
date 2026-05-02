@@ -1,5 +1,4 @@
-import TeamPage from '@/components/Team/TeamPage'
-import React from 'react'
+import TeamPage from "@/components/Admin/Team/TeamPage"
 
 const page = () => {
   return (
